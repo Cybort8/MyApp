@@ -1,20 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <swiper-container
+  slides-per-view="1"
+  pagination="true"
+  >
+    <swiper-slide class="bg-color-slide">
+      <h1 class="title1">Hola Slide 1</h1>
+      <img src="/assets/images/gatitos-bebes-1.jpg">
+      <ion-icon name="cafe-outline"></ion-icon>
+      <p>Hola soy el slide uno de la libreria swiper</p>
+    </swiper-slide>
+    <swiper-slide>
+      <h1>Hola Slide 2</h1>
+      <img src="https://www.mundogatos.com/Uploads/mundogatos.com/ImagenesGrandes/fotos-de-gatitos-3-0.jpg">
+      <ion-icon name="battery-charging-outline"></ion-icon>
+      <p>Hola soy el slide dos de la libreria swiper</p>
+    </swiper-slide>
+    <swiper-slide>
+      <h1>Hola Slide 3</h1>
+      <ion-icon name="battery-charging-outline"></ion-icon>
+      <p>Hola soy el slide tres de la libreria swiper</p>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>
