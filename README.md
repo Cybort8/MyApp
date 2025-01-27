@@ -1,6 +1,5 @@
 # MyApp
-# MyApp
-# MyApp
-# MyApp
-# MyApp
-# MyApp
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5d8f23599de690382abc97c16c5515cf3963d495
