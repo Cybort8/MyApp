@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle'; //IMPORTAMOS EL REGISTER DE SWIPER
-
+import { Storage } from '@ionic/storage-angular'; // importamos el Storage
 register(); //REGISTRAMOS EL SWIPER
 
 @Component({
@@ -10,5 +10,9 @@ register(); //REGISTRAMOS EL SWIPER
   standalone: false,
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private storage: Storage) {}
+
+  async ngOnInit() {
+    await this.storage.create();
+  }
 }

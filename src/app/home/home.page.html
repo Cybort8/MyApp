@@ -1,24 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 <ion-content>
-  <swiper-container
-  slides-per-view="1"
-  pagination="true"
-  >
-    <swiper-slide class="bg-color-slide">
-      <h1 class="title1">Hola Slide 1</h1>
-      <img src="/assets/images/gatitos-bebes-1.jpg">
-      <ion-icon name="cafe-outline"></ion-icon>
-      <p>Hola soy el slide uno de la libreria swiper</p>
-    </swiper-slide>
-    <swiper-slide>
-      <h1>Hola Slide 2</h1>
-      <img src="https://www.mundogatos.com/Uploads/mundogatos.com/ImagenesGrandes/fotos-de-gatitos-3-0.jpg">
-      <ion-icon name="battery-charging-outline"></ion-icon>
-      <p>Hola soy el slide dos de la libreria swiper</p>
-    </swiper-slide>
-    <swiper-slide>
-      <h1>Hola Slide 3</h1>
-      <ion-icon name="battery-charging-outline"></ion-icon>
-      <p>Hola soy el slide tres de la libreria swiper</p>
-    </swiper-slide>
-  </swiper-container>
+    <ion-list>
+        <ion-card *ngFor="let post of posts">
+            <img src="{{post.image}}" class="image-post" />
+            <ion-card-header>
+                <ion-card-subtitle>
+                    <ion-avatar class="user-avatar">
+                        <img 
+                        [src]="post.user.image ? post.user.image : 'assets/images/default-avatar.jpeg'"
+                        />
+                    </ion-avatar>
+                    {{post.user.name}}
+                </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                {{post.description}}
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="addPost()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
