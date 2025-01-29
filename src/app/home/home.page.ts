@@ -1,29 +1,64 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+import { PostService } from '../services/post.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone:false,
+  standalone: false,
 })
-export class HomePage implements OnInit {
-  posts: any[] = []; // Inicializa la propiedad `posts` como un arreglo.
+export class HomePage {
+  posts: any[] = [];
+  page: number = 1;
+  limit: number = 10;
+  hasMore: boolean = true;
+  constructor(
+    private postService: PostService,
+    private modalController: ModalController,
+    private menu: MenuController,
+    private navCtrl: NavController,
+    private storage: Storage
+  ) {}
 
-  constructor() {}
-
-  ngOnInit() {
-    // Puedes inicializar los datos aquí.
-    this.posts = [
-      { title: 'Primer Post', content: 'Este es el contenido del primer post' },
-      { title: 'Segundo Post', content: 'Este es el contenido del segundo post' },
-    ];
+  ngOnInit(){
+    console.log('Init Home');
+    this.loadPosts();
   }
 
-  addPost() {
-    // Lógica para añadir un nuevo post.
-    this.posts.push({
-      title: `Post ${this.posts.length + 1}`,
-      content: 'Este es un nuevo contenido',
-    });
+  loadPosts(event?: any){
+    console.log('Load Posts');
+    this.postService.getPost(this.page, this.limit).then(
+      (data: any)=>{
+        if (data.length > 0){
+          this.posts = [...this.posts, ...data];
+          this.page++;
+        }else{
+          this.hasMore = false;
+        }
+
+        if (event){
+          event.target.complete();
+        }
+      },
+      (error)=>{
+        console.log(error);
+        if (event){
+          event.target.complete();
+        }
+      }
+    )
   }
+
+  closeMenu(){
+    this.menu.close();
+  }
+  log_out(){
+    this.storage.remove("isUserLoggedIn");
+    this.navCtrl.navigateRoot("/login");
+  }
+
 }

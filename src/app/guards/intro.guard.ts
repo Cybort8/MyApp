@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root'
 })
 
-export class introGuard implements CanActivate{
+export class IntroGuard implements CanActivate{
   constructor(private storage: Storage, private router: Router){}
   async canActivate(){
     const isIntroShowed = await this.storage.get('viLaIntro');
