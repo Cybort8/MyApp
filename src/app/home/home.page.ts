@@ -4,7 +4,7 @@ import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { PostService } from '../services/post.service';
 import { ModalController } from '@ionic/angular';
-
+import { AddPostModalPage } from '../add-post-modal/add-post-modal.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -27,6 +27,15 @@ export class HomePage {
   ngOnInit(){
     console.log('Init Home');
     this.loadPosts();
+  }
+
+  async addPost(){
+    console.log('Add Post');
+    const modal = await this.modalController.create({
+      component: AddPostModalPage,
+      componentProps:{}
+    });
+    return await modal.present();
   }
 
   loadPosts(event?: any){

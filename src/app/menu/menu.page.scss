@@ -1,0 +1,58 @@
+/* Fondo negro general */
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Configuración del menú */
+ion-menu {
+    --background: black;
+    --width: 220px;
+    --side: end;
+}
+
+/* Título del menú */
+#menu-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Estilo para los ítems del menú */
+ion-item {
+    --background: black;
+    --color: white;
+    font-size: 16px;
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+ion-item:hover {
+    --background: #222;
+    --color: #ddd;
+}
+
+/* Estilo para los íconos del menú */
+ion-icon {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+ion-item:hover ion-icon {
+    color: #bbb;
+}
+
+/* Estilos para los botones */
+ion-button {
+    background-color: #444;
+    color: white;
+    --border-radius: 4px;
+    --height: 40px;
+    transition: background 0.3s;
+}
+
+ion-button:hover {
+    background-color: #666;
+}

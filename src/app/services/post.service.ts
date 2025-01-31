@@ -8,6 +8,7 @@ export class PostService {
   urlServer = 'http://51.79.26.171';
   //urlServer = 'http://localhost:3000';
   httpHeaders = { headers: new HttpHeaders({"Content-Type": "application/json"})};
+  postCreated: any;
 
   constructor(
     private http: HttpClient

@@ -1,0 +1,58 @@
+/* Estilos generales */
+ion-content {
+  --background: #000000; /* Fondo claro */
+  padding: 16px; /* Espaciado alrededor del contenido */
+}
+
+h1 {
+  font-size: 24px; /* Tamaño de fuente del nombre */
+  font-weight: bold; /* Negrita para el nombre */
+  margin: 12px 0; /* Margen superior e inferior */
+}
+
+p {
+  font-size: 16px; /* Tamaño de fuente para párrafos */
+  margin: 4px 0; /* Margen vertical reducido */
+  color: #666; /* Color de texto gris para mejor legibilidad */
+}
+
+/* Estilo del ion-card */
+ion-card {
+  background-color: rgba(97, 97, 97, 0.182); /* Fondo blanco para las tarjetas */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 16px; /* Espacio entre las tarjetas */
+  padding: 16px; /* Espaciado interno */
+}
+
+/* Estilo del avatar */
+.profile-avatar {
+  width: 80px; /* Ancho del avatar */
+  height: 80px; /* Alto del avatar */
+  margin: 0 auto; /* Centrando el avatar */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el avatar */
+  border: 2px solid #007bff; /* Borde azul alrededor del avatar */
+}
+
+/* Estilo de los botones */
+ion-button {
+  margin-top: 8px; /* Espacio superior entre botones */
+}
+
+ion-button[color="light"] {
+  --background: #f0f0f0; /* Color de fondo claro para el botón de cancelar */
+  --color: #333; /* Color de texto más oscuro para contraste */
+}
+
+/* Estilo de ion-label en modo apilado */
+ion-label {
+  font-weight: bold; /* Negrita para los labels */
+  color: #444; /* Color de texto ligeramente más oscuro */
+}
+
+/* Estilo de ion-input */
+ion-input {
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 8px; /* Espaciado interno */
+}

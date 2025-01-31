@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Nuevo Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="addPostForm" (ngSubmit)="addPost(addPostForm.value)">
+    <div (click)="uploadPhone()" class="image-upload-container">
+      <img 
+        [src]="post_image ? post_image : 'assets/images/place_holder.jpeg'" 
+        alt="Imagen del post"
+        class="post-image"
+      />
+      <p *ngIf="!post_image" class="upload-text">Haz clic para subir una imagen</p>
+    </div>
+
+    <div *ngIf="addPostForm.get('description')?.invalid && (addPostForm.get('description')?.touched || addPostForm.get('description')?.dirty)" class="error-message">
+      <p>La imagen es obligatoria</p>
+    </div>
+
+    <ion-item>
+      <ion-textarea 
+        label="Descripción del post" 
+        labelPlacement="floating" 
+        placeholder="Cuenta lo que estás pensando" 
+        formControlName="description" 
+        required
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-footer>
+      <ion-button 
+        type="submit"
+        [disabled]="!addPostForm.valid"
+        expand="full"
+      >
+        Publicar
+      </ion-button>
+    </ion-footer>
+  </form>
+</ion-content>
