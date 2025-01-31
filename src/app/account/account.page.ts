@@ -19,8 +19,8 @@ export class AccountPage implements OnInit {
     email: '',
     username: '',
     image: '',
-    followed_users: [],
-    following_users: [],
+    followees: [],
+    followers: [],
   };
   originalUserData: any = {};
   isEditing: boolean = false;

@@ -89,6 +89,8 @@
 
     <ion-button type="submit" [disabled]="!registerForm.valid">Registrar</ion-button>
   </form>
-
+  <div class="home-button-container">
+    <ion-button expand="full" (click)="goHome()">Volver al Home</ion-button>
+  </div>
   <p color="danger">{{ errorMessage }}</p>
 </ion-content>

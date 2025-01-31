@@ -6,7 +6,7 @@ import { PostService } from '../services/post.service';
 import { Storage } from '@ionic/storage-angular';
 import { ModalController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
-
+import { AlertController } from '@ionic/angular';
 defineCustomElements(window);
 
 @Component({
@@ -25,6 +25,7 @@ export class AddPostModalPage implements OnInit {
     private storage: Storage,
     private modalController: ModalController,
     private navCtrl: NavController,
+    public alertController: AlertController,
   ) {
     this.addPostForm = this.formBuilder.group({
       description: new FormControl('', Validators.required),
@@ -35,18 +36,54 @@ export class AddPostModalPage implements OnInit {
   ngOnInit() {}
 
   async uploadPhone() {
-    console.log('Upload Photo');
-    const uploadPhoto = await Camera.getPhoto({
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Photos,
-      quality: 100
-    });
-    this.post_image = uploadPhoto.dataUrl;
-    this.addPostForm.patchValue({
-      image: this.post_image
-    });
+    await this.presentPhotoOptions(); 
   }
 
+  async takePhoto(source: CameraSource) {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.DataUrl,
+      source: source,
+    });
+
+    if (image && image.dataUrl) {
+      this.post_image = image.dataUrl;
+      this.addPostForm.patchValue({
+        image: this.post_image,
+      });
+    }
+  }
+
+  async presentPhotoOptions() {
+    const alert = await this.alertController.create({
+      header: "Seleccionar una opción",
+      message: "¿De dónde quieres obtener la imagen?",
+      buttons: [
+        {
+          text: "Cámara",
+          handler: () => {
+            this.takePhoto(CameraSource.Camera); 
+          },
+        },
+        {
+          text: "Galería",
+          handler: () => {
+            this.takePhoto(CameraSource.Photos); 
+          },
+        },
+        {
+          text: "Cancelar",
+          role: "cancel",
+          handler: () => {
+            console.log("Cancelado");
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+  
   async addPost(post_data: any) {
     console.log('Add Post');
     console.log(post_data);
@@ -82,5 +119,8 @@ export class AddPostModalPage implements OnInit {
         console.log(error, 'error');
       }
     );
+  }
+  async dismissModal() {
+    await this.modalController.dismiss(); 
   }
 }

@@ -82,4 +82,7 @@ export class RegisterPage implements OnInit {
       this.errorMessage = 'Por favor, completa todos los campos correctamente.';
     }
   }
+  goHome() {
+    this.navCtrl.navigateRoot('/login');  // Asegúrate de que '/home' sea la ruta correcta
+  }
 }
