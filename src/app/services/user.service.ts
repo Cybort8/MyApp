@@ -76,16 +76,19 @@ export class UserService {
       )
     });
   }
-  unfollowUser(user_id: any, followee_id: any){
+  unfollowUser(user_id: any, followee_id: any) {
+    const unfollow_params = {
+      followee_id: followee_id
+    };
     return new Promise((accept, reject) => {
-      this.http.delete(`${this.urlServer}/unfollow/${user_id}/${followee_id}`, this.httpHeaders).subscribe(
+      this.http.post(`${this.urlServer}/unfollow/${user_id}`, unfollow_params, this.httpHeaders).subscribe(
         (data: any) => {
           accept(data);
         },
         (error) => {
           console.log(error, 'error');
-          if (error.status == 500){
-            reject('Error Porfavor intenta mas tarde');
+          if (error.status == 500) {
+            reject('Error, por favor intenta más tarde');
           } else {
             reject('Error al dejar de seguir al usuario');
           }
